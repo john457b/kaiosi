@@ -1,0 +1,9 @@
+ {
+  "name": "Wallace Toolbox",
+  "package_path": "https://john457b.github.io/kaiosi/wallace.zip",
+  "version": "0.0.6",
+  "developer": {
+    "name": "Luxferre",
+    "url": "https://gitlab.com/suborg/wallace-toolbox"
+  }
+}

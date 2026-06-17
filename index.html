@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wallace Installer</title>
+  <style>
+    body { font-family: sans-serif; padding: 12px; font-size: 18px; }
+    button { width: 100%; padding: 16px; font-size: 20px; margin: 8px 0; }
+    #log { background: #eee; padding: 8px; font-family: monospace;
+           font-size: 14px; white-space: pre-wrap; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h2>Install Wallace Toolbox</h2>
+  <button id="go">INSTALL</button>
+  <div id="log">Ready.</div>
+
+  <script>
+    var log = document.getElementById('log');
+    function L(m){ log.textContent += "\n" + m; }
+
+    document.getElementById('go').onclick = function() {
+      L("Calling installPackage...");
+      if (!navigator.mozApps) {
+        L("ERROR: navigator.mozApps not available");
+        return;
+      }
+      var url = "https://john457b.github.io/kaiosi/wallace.webapp";
+      var req = navigator.mozApps.installPackage(url);
+      req.onsuccess = function() { L("SUCCESS: " + JSON.stringify(req.result || {})); };
+      req.onerror   = function() { L("ERROR: " + (req.error && req.error.name)); };
+    };
+  </script>
+</body>
+</html>
